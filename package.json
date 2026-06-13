@@ -1,0 +1,31 @@
+{
+  "name": "vpnhub-telegram-bot",
+  "version": "1.0.0",
+  "description": "Cloudflare Workers Telegram bot for aggregating and forwarding VPN configuration from subscribed channels with source attribution.",
+  "author": {
+    "name": "Sampa-ASA",
+    "url": "https://t.me/Sampa_Asa"
+  },
+  "homepage": "https://github.com/sampa-asa/vpnhub-telegram-bot#readme",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sampa-asa/vpnhub-telegram-bot/issues"
+  },
+  "keywords": [
+    "telegram-bot",
+    "cloudflare-workers",
+    "wrangler",
+    "vpn"
+  ],
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "build": "build-worker.bat",
+    "deploy": "wrangler deploy",
+    "migrate": "wrangler d1 migrations apply vpnhub_bot",
+    "test": "node scripts/run-tests.mjs"
+  },
+  "devDependencies": {
+    "wrangler": "^4.100.0"
+  }
+}

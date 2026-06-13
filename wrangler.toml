@@ -1,0 +1,20 @@
+﻿﻿name = "vpnhub-telegram-bot"
+main = "src/index.js"
+compatibility_date = ""
+
+[[d1_databases]]
+binding = "DB"
+database_name = "vpnhub_bot"
+database_id = "********-****-****-****-************"
+
+[version_metadata]
+binding = "CF_VERSION_METADATA"
+
+[vars]
+OWNER_CHAT_ID = "**********"
+DEBUG = "0"
+BOT_TOKEN = "**********:***********************************"
+TARGET_CHANNEL_ID = "@ASA_VPN_Hub"
+WEBHOOK_SECRET = "YOUR_WEBHOOK_SECRET"
+ADMIN_CHANNEL_ID = "@Sampa_Asa"
+ADMIN_SUPPORT_DIRECT_URL = "https://t.me/Sampa_Asa?direct"
