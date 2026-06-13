@@ -8,14 +8,13 @@
 - ادمین بودن ربات در کانال‌های منبعی که می‌خواهید بررسی شوند
 
 ## شروع به کار
-### روش اول(پیشنهادی)
-#### دریافت پروژه
+### دریافت پروژه
 کدهای این repo را دانلود کنید و یا به کمک فرمان زیر، clone کنید:
 ```bash
 git clone https://github.com/sampa-asa/vpnhub-telegram-bot.git
 ```
 
-#### تنظیم `wrangler.toml`
+### تنظیم `wrangler.toml`
 سپس، این موارد موجود در فایل `wrangler.toml` را تنظیم کنید:
 
 - `BOT_TOKEN` (توکن ربات شما که در BotFather دریافت کرده‌اید)
@@ -25,7 +24,7 @@ git clone https://github.com/sampa-asa/vpnhub-telegram-bot.git
 - `ADMIN_CHANNEL_ID` (ID کانال ادمین که با `@` شروع می‌شود و در راهنمای کاربران، نمایش داده می‌شود)
 - `ADMIN_SUPPORT_DIRECT_URL` (آدرس `url` پشتیبانی که در راهنمای کاربران، نمایش داده می‌شود)
 
-#### استقرار
+### استقرار
 سپس، فرمان زیر را در cmd اجرا کنید تا worker و Database در پروفایل cloudflare شما، ایجاد شود و خروجی این برنامه، در آنجا استقرار شود:
 ```bash
 deploy-worker.bat
@@ -37,38 +36,7 @@ set CF_PROXY_URL=http://IP:PORT
 deploy-worker.bat
 ```
 
-#### تنظیم webhook
-فرمان زیر را وارد کنید
-```bash
-curl https://api.telegram.org/bot<BOT_TOKEN>/setWebhook?url=https://YOUR-WORKER-DOMAIN/webhook/YOUR_WEBHOOK_SECRET
-```
-یا اگر نیاز به استفاده از http proxy دارید، فرمان زیر را وارد کنید:
-```bash
-curl -x http://IP:PORT https://api.telegram.org/bot<BOT_TOKEN>/setWebhook?url=https://YOUR-WORKER-DOMAIN/webhook/YOUR_WEBHOOK_SECRET
-```
-
-### روش دوم
-#### دریافت فایل خروجی
-در [آخرین release](https://github.com/sampa-asa/vpnhub-telegram-bot/releases/latest) این Repo، فایل worker.js را دریافت کنید
-
-#### راه‌اندازی worker
-1. یک D1 SQLite Database در Cloudflare بسازید.
-2. سپس، یک worker بسازید (ترجیحاً گزینه‌ی `start with hello world` را بزنید).
-3. در worker، یک binding با مشخصات زیر، اضافه کنید
-   - از سمت راست، نوع D1 Database را انتخاب کنید.
-   - Variable name: DB
-   - D1 database: نام databaseیی که ایجاد کرده‌اید
-4. سپس، وارد قسمت `edit code` شوید و فایل `worker.js` را جایگزین کنید و از بالا، بر روی دکمۀ deploy کلیک کنید (اگر پیام `Version saved` را در پایین دیدید، به این معناست که این تغییر، با موفقیت اعمال شده).
-5. سپس، در قسمت `settings` مربوط به worker خودتون، در قسمت `Variables and secrets`، این مقادیر را با مشخصات زیر، اضافه کنید و بر روی دکمۀ `deploy` کلیک کنید (توجه داشته باشید که type تمامی این موارد، از نوع text هست):
-   - OWNER_CHAT_ID: (مقدار chat_id اکانت تلگرامی ادمین ربات)
-   - DEBUG: (حالت اشکال زدایی که برای غیر فعال بودن آن، بر روی 0 قرار دهید)
-   - BOT_TOKEN: توکن ربات تلگرامی که در BotFather دریافت کرده‌اید. 
-   - TARGET_CHANNEL_ID: کانال تلگرامی که کانفیگ‌ها در آنجا ارسال می‌شود
-   - WEBHOOK_SECRET: رشته متنی دلخواه
-   - ADMIN_CHANNEL_ID: ID کانال ادمین که با `@` شروع می‌شود و در راهنمای کاربران، نمایش داده می‌شود
-   - ADMIN_SUPPORT_DIRECT_URL: آدرس `url` پشتیبانی که در راهنمای کاربران، نمایش داده می‌شود
-
-#### تنظیم webhook
+### تنظیم webhook
 فرمان زیر را وارد کنید
 ```bash
 curl https://api.telegram.org/bot<BOT_TOKEN>/setWebhook?url=https://YOUR-WORKER-DOMAIN/webhook/YOUR_WEBHOOK_SECRET
